@@ -1,0 +1,224 @@
+curl https://<domain>/v2/history/latest-loan-application?email=<customer_email>
+-H "jwtoken: <Token>" 
+-H "Content-Type: application/json"
+-X GET
+
+Description: Provides a rich source of information for everything about the customer's loan in real time 
+
+response
+{
+    "code": 200,
+    "status": "OK",
+    "message": "",
+    "result": {
+      "latest_loan_status": "DISBURSED_AND_ACTIVE",
+      "latest_loan_details": {
+        "universal_id": "3099006069168228088069108",
+        "level_default_amount": "5000.00",
+        "currency": "NGN",
+        "interest": "3000.00",
+        "type": "nano loan",
+        "tenor_days": "15",
+        "seen": true,
+        "approved": true,
+        "disbursed": true,
+        "closed": false,
+        "approval_details": {
+          "time": "2022-06-18 03:10:44",
+          "officer": {
+            "firstname": "Azis",
+            "lastname": "Zina",
+            "email": "umgar3@yahoo.com"
+          }
+        },
+        "disbursement_details": {
+          "amount_disbursed": "20000.00",
+          "time": "2022-09-06 09:35:34",
+          "officer": {
+            "firstname": "Femi",
+            "lastname": "Mofe",
+            "email": "umgar@yahoo.com"
+          }
+        },
+        "decline_details": {
+          "was_declined": false,
+          "time": "-",
+          "reasons": "Younger than 18 years, Ondo is not accepted",
+          "officer": null
+        },
+        "other_charges": [
+            {
+              "name": "consultancy charges",
+              "value": "217.77"
+            },
+            {
+              "name": "welcome cd",
+              "value": "1234.56"
+            },
+            {
+              "name": "loan calculator usage",
+              "value": "375.55"
+            }
+        ],
+        "tenor": {
+          "days_allowed": "15",
+          "days_counted": "0",
+          "countdown": {
+            "days_remaining": "14",
+            "hours_remaining": "23",
+            "minutes_remaining": "55",
+            "seconds_remaining": "25"
+          }
+        },
+        "repayment": {
+          "link": "/v2/loan/repayment/304644b41f4aab027b4ca657a8e9416b5281",
+          "method": "POST",
+          "started": true,
+          "complete": false,
+          "total_paid": "0.00",
+          "amount_outstanding": "23000.00",
+          "history": [
+            {
+              "amount": "3532.33",
+              "channel": "pay point",
+              "receiver": "system",
+              "time": "2022-06-15 03:22:40",
+              "transaction_id_type": "pay point",
+              "transaction_id": "g9436GD4gfkr37758333s772003948"
+            },
+            {
+              "amount": "5384.77",
+              "channel": "pay point",
+              "receiver": "system",
+              "time": "2022-06-15 03:25:48",
+              "transaction_id_type": "pay point",
+              "transaction_id": "g9436GD4gfkr37758333s772003948"
+            },
+            {
+              "amount": "79.23",
+              "channel": "pay point",
+              "receiver": "system",
+              "time": "2022-06-15 03:30:15",
+              "transaction_id_type": "pay point",
+              "transaction_id": "g9436GD4gfkr37758333s772003948"
+            }
+          ]
+        },
+        "defaulting": {
+          "charge_interval_type": "daily",
+          "charge_amount": "232.00",
+          "times_charged": "-",
+          "total_charge": "-"
+        }
+      }
+    }
+}
+
+
+
+/*
+* Below explains the keys for the loan
+* and what you should expect fromeach of them
+*
+ */
+
+
+
+latest_loan_status: "A constant to tell the status of the current loan",
+ -possible values:  'NOT_FOUND'
+                    'NOT_SEEN_BY_ADMIN'
+                    'PENDING'
+                    'DECLINED'
+                    'APPROVED--NO_ACTION_TAKEN'
+                    'APPROVED--DISBURSING_NO_FEEDBACK'
+                    'APPROVED--FAILED_DISBURSEMENT_ATTEMPT'
+                    'DISBURSED_AND_ACTIVE'
+                    'DISBURSED_AND_OVERDUE'
+                    'COMPLETED_AND_CLOSED'
+                    'WRITTEN_OFF'
+
+latest_loan_details: {
+  universal_id: "A id to identify a loan all through its lifecycle",
+  level_default_amount: "The default amount meant for the very ask stage of the loan, user may select a smaller amount",
+  currency: "A three letter currency constant for the transaction eg. NGN", -default: 
+  interest: "The basic interest on the loan. This amount plus the principal makes up all that is to be paid if no other charges accrued e.g 3000.00",
+  type: "The title of the current loan in question", -default: "nano loan"
+  tenor_days: "The default days allowed for this loan, see the actual days allowed at latest_loan_details.other_charges.days_allowed", -default: "15"
+  seen: "Boolean stating if a human has seen the loan application from the admin dashboard", -default: false
+  approved: "Boolean stating if the loan has reached or passed approve state", -default: false
+  disbursed: "Boolean stating if the funds have been paid into customers account", -default: false
+  closed: "Boolean stating if this loan case is still running", -default: false
+  approval_details: {
+    time: "Lagos time of the day when the loan was approved", -default: "-"
+    officer: { -default: null
+      firstname: "Firstname of the approval officer in session",
+      lastname: "Surname of the approval officer in session",
+      email: "Email of the approval officer in session"
+    }
+  },
+  disbursement_details: {
+    amount_disbursed: "The actual amount that was disbursed as against the propose amount e.g 20000.00",
+    time: "Lagos time of the day when the loan was disbursed",
+    officer: { -default: null
+      firstname: "Firstname of the disbursement officer in session",
+      lastname: "Surname of the disbursement officer in session",
+      email: "Email of the disbursement officer"
+    }
+  },
+  decline_details: {
+    was_declined: "Boolean to state if the loan was declined",
+    time: "Lagos time of the day when the loan was declined",
+    reasons: "System generated text as to why the loan was declined",
+    officer: "Array with details of the officer that declined the loan"
+  },
+  other_charges: "Array of charges other than the principal amount, interest and overdue charges will be reflected", -default: null
+  tenor: {
+    days_allowed: "The tenor days actually allowed for the duration",
+    days_counted: "The number of days the loan ran (or is at)",
+    countdown: {
+      days_remaining: "Days left",
+      hours_remaining: "Hours left",
+      minutes_remaining: "Minutes left",
+      seconds_remaining: "Seconds left"
+    }
+  },
+  repayment: {
+    link: "Link to make a post request to when customer wants to repay loan before expiry",
+    method: "Method required for sending the link above",
+    started: "Boolean of if any repayment, part of full has been made",
+    complete: "Boolean of if all payments amounted to full payment required",
+    total_paid: "Total paid so far",
+    amount_outstanding: "Total left",
+    history: [
+      {
+        amount: "First amount repaid",
+        channel: "Channel through which the payment was made eg. card, airomoni account",
+        receiver: "System or account name that was credited with the money",
+        time: "Payments provider time of payment",
+        transaction_id_type:"Type of transaction id to expect below",
+        transaction_id: "Transaction or reference number from payment channel"
+      },
+      {
+        amount: "Second amout repaid",
+        channel: "**as above**",
+        receiver: "**as above**",
+        time: "**as above**",
+        transaction_id_type: "**as above**",
+        transaction_id: "**as above**"
+      },
+      {
+        amount: 79.23,
+        channel: pay point,
+        receiver: system,
+        time: 2022-06-15 03:30:15,
+        transaction_id_type: pay point,
+        transaction_id: g9436GD4gfkr37758333s772003948
+      }
+    ]
+  },
+  defaulting: {
+    charge_interval_type: "The interval title for the defaulting charge",
+    charge_amount: "Amount charged on each defaulting time count",
+    times_charged: "Total times charged so far",
+    total_charge: "Total amount charges so far"
+  }
