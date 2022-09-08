@@ -1,0 +1,21 @@
+curl https://<domain>/v2/loan/repayment/f71a4684d6ba55af4eec81d3bee872ea7147  
+-H "jwtoken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImJhc2lsbUB5YWguY29tIiwic2FsdCI6IlJwRWxZbUNyeiIsInRpbWUiOjE2NjI1MTg1NTd9.dV4Tmxajo1NNPxlBE7S7cfhl2PD6024ltz6Z6hki7fc"
+-H "Content-Type: application/json"
+-X POST
+
+Description: When user decided to repay before the validity expires fetch this endpoint from the history and specify the amount to be drawn from Airo* account for repayment
+
+body (sample)
+{
+    *"customer_email": "abubakar@hooya.com",
+    *"loan_universal_id": "3211165067227008110072009",
+    *"amount": "0.89"
+}
+
+
+body (description)
+{
+    *"customer_email": "email address used in registration",
+    *"loan_universal_id": "fetch id from >> result.latest_loan_details.universal_id in the history response",
+    *"amount": "no comma, only amount and kobo decimal ie. 0.89 or 8900.00"
+}

@@ -3,9 +3,10 @@ curl https://<domain>/v2/history/latest-loan-application?email=<customer_email>
 -H "Content-Type: application/json"
 -X GET
 
+//https://172.27.0.4/v2/history/latest-loan-application?email=twelvetokin@yah.com
 Description: Provides a rich source of information for everything about the customer's loan in real time 
 
-response
+response (sample)
 {
     "code": 200,
     "status": "OK",
@@ -122,8 +123,6 @@ response
 *
  */
 
-
-
 latest_loan_status: "A constant to tell the status of the current loan",
  -possible values:  'NOT_FOUND'
                     'NOT_SEEN_BY_ADMIN'
@@ -169,7 +168,7 @@ latest_loan_details: {
     was_declined: "Boolean to state if the loan was declined",
     time: "Lagos time of the day when the loan was declined",
     reasons: "System generated text as to why the loan was declined",
-    officer: "Array with details of the officer that declined the loan"
+    officer: "Array with details of the officer that declined the loan, System could also decline a loan according to scoring settings, at this point latest_loan_details.seen will still be false while decline_details.officer.firstname will be >> System"
   },
   other_charges: "Array of charges other than the principal amount, interest and overdue charges will be reflected", -default: null
   tenor: {
