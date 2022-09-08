@@ -71,10 +71,7 @@ response (sample)
                 "interest": "750.00",
                 "type": "nano loan",
                 "tenor_days": "15",
-                "seen": false,
-                "approved": false,
-                "disbursed": false,
-                "closed": false,
+                "seen": false
               }
         }
     }
