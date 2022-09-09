@@ -1,5 +1,5 @@
 # airopay-loan-api-docs
-This serves as a documentation to explain the various endpoints for the loan application
+This serves as a documentation to explain the various endpoints of the loan application
 
 - The first part signifies the call to make with "-H" being header property and "-X" being the method/verb
 - The second part is a brief description of what the endpoint is all about.
