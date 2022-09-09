@@ -3,7 +3,7 @@ curl https://<domain>/v2/loan/repayment/f71a4684d6ba55af4eec81d3bee872ea7147
 -H "Content-Type: application/json"
 -X POST
 
-Description: When user decided to repay before the validity expires fetch this endpoint from the history and specify the amount to be drawn from Airo* account for repayment
+Description: When user decided to repay before the validity expires fetch this endpoint (from within the history response) and specify the amount to be drawn from Airo* account for repayment
 
 body (sample)
 {
