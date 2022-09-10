@@ -137,7 +137,7 @@ latest_loan_status: "A constant to tell the status of the current loan",
                     'WRITTEN_OFF'
 
 latest_loan_details: {
-  universal_id: "A id to identify a loan all through its lifecycle",
+  universal_id: "An id to identify a loan all through its lifecycle",
   level_default_amount: "The default amount meant for the very ask stage of the loan, user may select a smaller amount",
   currency: "A three letter currency constant for the transaction eg. NGN", -default: 
   interest: "The basic interest on the loan. This amount plus the principal makes up all that is to be paid if no other charges accrued e.g 3000.00",
@@ -146,7 +146,7 @@ latest_loan_details: {
   seen: "Boolean stating if a human has seen the loan application from the admin dashboard", -default: false
   approved: "Boolean stating if the loan has reached or passed approve state", -default: false
   disbursed: "Boolean stating if the funds have been paid into customers account", -default: false
-  closed: "Boolean stating if this loan case is still running", -default: false
+  closed: "Boolean stating if this loan case is still running or user is ready to apply for another", -default: false
   approval_details: {
     time: "Lagos time of the day when the loan was approved", -default: "-"
     officer: { -default: null
@@ -221,3 +221,19 @@ latest_loan_details: {
     times_charged: "Total times charged so far",
     total_charge: "Total amount charges so far"
   }
+
+
+
+
+/*
+* Whenever you see the below, it is an indication that
+* you should register the customer
+*/
+
+response
+{
+  "code": 404,
+  "status": "Not Found",
+  "message": "Could not find any customer record with the email address",
+  "result": []
+}
