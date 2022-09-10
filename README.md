@@ -26,9 +26,7 @@ Always call the history with the customer's email address and three things could
     "result": []
 }
 ```
-this means you have to display blank fields and register for a new loan with the endpoint at the new_loan_request file in the root dir or you simply leave if the customer is not interested in taking a loan.
-<br/>
-<br/>
+This means you have to display blank fields and register for a new loan with the endpoint at the new_loan_request file in the root dir or you simply leave if the customer is not interested in taking a loan.
 <br/>
 
 
@@ -42,7 +40,7 @@ this means you have to display blank fields and register for a new loan with the
     "result": []
 }
 ```
-this means you are to present the jwtoken generated or revalidate it using the initial email address and salt provided at registeration.
+This means you are to present the jwtoken generated or revalidate it using the initial email address and salt provided at registeration.
 <br/>
 <br/>
 <br/>
