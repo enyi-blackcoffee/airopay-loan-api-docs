@@ -10,8 +10,6 @@ Each file in the root directory signifies an endpoint to call and how to go abou
 - The response body is the payload to expect in response to the request for the app to make its decisions and pass information to the user.
 <br/>
 <br/>
-<br/>
-<br/>
 
 HOW TO USE
 
@@ -27,6 +25,8 @@ Always call the history with the customer's email address and three things could
 }
 ```
 This means you have to display blank fields and register for a new loan with the endpoint at the new_loan_request file in the root dir or you simply leave if the customer is not interested in taking a loan.
+<br/>
+<br/>
 <br/>
 
 
