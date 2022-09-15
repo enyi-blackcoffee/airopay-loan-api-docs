@@ -5,19 +5,17 @@ curl https://<domain>/v2/loan/repayment/f71a4684d6ba55af4eec81d3bee872ea7147
 
 Description: When user decided to repay before the validity expires fetch this endpoint (from within the history response) and specify the amount to be drawn from Airo* account for repayment
 
-````
 body (sample)
 {
     *"customer_email": "abubakar@hooya.com",
     *"loan_universal_id": "3211165067227008110072009",
     *"amount": "0.89"
 }
-````
-````
+
+
 body (description)
 {
     *"customer_email": "email address used in registration",
     *"loan_universal_id": "fetch id from >> result.latest_loan_details.universal_id in the history response",
     *"amount": "no comma, only amount and kobo decimal ie. 0.89 or 8900.00"
 }
-````

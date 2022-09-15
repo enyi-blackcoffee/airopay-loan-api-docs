@@ -6,7 +6,6 @@ curl https://<domain>/v2/history/latest-loan-application?email=<customer_email>
 //https://172.27.0.4/v2/history/latest-loan-application?email=twelvetokin@yah.com
 Description: Provides a rich source of information for everything about the customer's loan in real time 
 
-````
 response (sample)
 {
     "code": 200,
@@ -115,7 +114,7 @@ response (sample)
       }
     }
 }
-````
+
 
 
 /*
@@ -225,7 +224,7 @@ latest_loan_details: {
 
 
 
-````
+
 /*
 * Whenever you see the below, it is an indication that
 * you should register the customer
@@ -238,7 +237,7 @@ response
   "message": "Could not find any customer record with the email address",
   "result": []
 }
-````
+
 
 Description of constants
 
