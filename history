@@ -6,6 +6,7 @@ curl https://<domain>/v2/history/latest-loan-application?email=<customer_email>
 //https://172.27.0.4/v2/history/latest-loan-application?email=twelvetokin@yah.com
 Description: Provides a rich source of information for everything about the customer's loan in real time 
 
+```
 response (sample)
 {
     "code": 200,
@@ -114,7 +115,7 @@ response (sample)
       }
     }
 }
-
+```
 
 
 /*
@@ -224,7 +225,7 @@ latest_loan_details: {
 
 
 
-
+```
 /*
 * Whenever you see the below, it is an indication that
 * you should register the customer
@@ -237,3 +238,18 @@ response
   "message": "Could not find any customer record with the email address",
   "result": []
 }
+```
+
+Description of constants
+
+NOT_FOUND = When no loan record was found for the email address
+NOT_SEEN_BY_ADMIN = When the application has been submitted but not seen by any human
+PENDING = When the application has been clicked for review but no major action taken
+DECLINED = When the application has been declined
+APPROVED--NO_ACTION_TAKEN = When the loan application has been approved and no further action taken like disbursement
+APPROVED--DISBURSING_NO_FEEDBACK = When disburesement has been triggered but result of success or failure not recieved
+APPROVED--FAILED_DISBURSEMENT_ATTEMPT = When the last disbursement attempt failed
+DISBURSED_AND_ACTIVE = When disbursement is successful and tenor has started counting already
+DISBURSED_AND_OVERDUE = When the tenor has elapsed and the loan is already defaulting 
+COMPLETED_AND_CLOSED = When payment has been completed and user is ready for another round of loan
+WRITTEN_OFF = Should in case the management decides to write of the loan for the debtor

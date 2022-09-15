@@ -36,7 +36,7 @@ This means you have to display blank fields and register for a new loan with the
 {
     "code": 401,
     "status": "Not Authorized",
-    "message": "You are not authorized to view, provide a valid jwtoken header with the request",
+    "message": "You are not authorized to view, provide a valid jwtoken value with the request header",
     "result": []
 }
 ```
